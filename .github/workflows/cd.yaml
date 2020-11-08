@@ -38,17 +38,4 @@ jobs:
             file: ./Dockerfile
             tags: wesleywillians/microsservico-avancadev-b:${{ steps.tagging.outputs.new_version }}
 
-        - name: install doctl
-          uses: digitalocean/action-doctl@v2
-          with: 
-            token: ${{ secrets.DIGITALOCEAN_TOKEN }}
-
-        - name: setup kubectl
-          uses: matootie/dokube@v1.3.2
-          with: 
-            personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
-            clusterName: avancadevms
-
-        - name: set deployment image
-          run: kubectl set image deployment microsservicob microsservicob=wesleywillians/microsservico-avancadev-b:${{ steps.tagging.outputs.new_version }}
-
+       
